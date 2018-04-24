@@ -17,7 +17,7 @@ export default class Router extends Component{
     render(){
         return <HashRouter>
             <React.Fragment>
-                <Header />
+                <Route path="/" component={Header} />
                 <div className="body">
                     <Switch>
                         <Route path="/home" component={Home}/>

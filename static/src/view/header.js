@@ -2,20 +2,17 @@
  * Created by Administrator on 2018/3/27.
  */
 import React from 'react';
-import {render} from 'react-dom';
 import {NavLink,withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 
-const Header = ({match,list}) => {
+const Header = ({list}) => {
     return <div className="header">
         <nav className="nav-box">
             {
                 list.map(({path,title,iconCls},i) => {
-                    return <NavLink key={i} to={path}>
-                            {
-                                iconCls && <i className={`iconfont ${iconCls}`}/>
-                            }
-                            <span>{title}</span>
+                    return <NavLink className={`${iconCls ? 'btn-icon' : ''}`} key={i} to={path}>
+                        <i className={`iconfont ${iconCls}`}/>
+                        <span>{title}</span>
                     </NavLink>
                 })
             }
@@ -23,4 +20,4 @@ const Header = ({match,list}) => {
     </div>
 };
 
-export default connect(state => state.navData)(withRouter(Header));
+export default connect(state => state.navData)(Header);

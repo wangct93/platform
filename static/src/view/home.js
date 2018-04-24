@@ -10,29 +10,27 @@ import {HashRouter,NavLink,Switch,Route,Redirect,withRouter} from 'react-router-
 import * as actionObj from '../store/home/action';
 import echarts from 'echarts';
 
-const NavBox = withRouter(({data,match}) => {
-    return <HashRouter basename={match.url}>
-        <div className="home-nav-box mgb25">
-            <nav className="home-nav">
+const NavBox = ({data}) => {
+    return <div className="home-nav-box mgb25">
+        <nav className="home-nav">
+            {
+                data.map(({iconCls,text,path},i) => {
+                    return <NavLink key={i} to={path} className={`nav-item ${iconCls}`}>{text}</NavLink>
+                })
+            }
+        </nav>
+        <div className="home-nav-content home-box">
+            <Switch>
                 {
-                    data.map(({iconCls,text,path},i) => {
-                        return <NavLink key={i} to={path} className={`nav-item ${iconCls}`}>{text}</NavLink>
+                    data.map(({path,component},i) => {
+                        return <Route path={path} key={i} component={component}/>
                     })
                 }
-            </nav>
-            <div className="home-nav-content home-box">
-                <Switch>
-                    {
-                        data.map(({path,component},i) => {
-                            return <Route path={path} key={i} component={component}/>
-                        })
-                    }
-                    <Redirect to={data[0].path} />
-                </Switch>
-            </div>
+                <Redirect to={data[0].path} />
+            </Switch>
         </div>
-    </HashRouter>
-});
+    </div>;
+};
 
 const getChartOption = (title,xData,seriesData) => {
     return {
@@ -194,7 +192,7 @@ const getNavData = () => {
 
 class Home extends Component{
     render(){
-        let {menuList,caseData} = this.props;
+        let {menuList,caseData,match} = this.props;
         return <div className="body-content home-container">
             <div className="home-bg">
                 <img src="img/home/home_bg.png" />
@@ -211,7 +209,9 @@ class Home extends Component{
                 </ul>
                 <div className="home-main">
                     <div className="home-left">
-                        <NavBox data={getNavData()}/>
+                        <HashRouter basename={match.url}>
+                            <NavBox data={getNavData()}/>
+                        </HashRouter>
                         <Box data={{
                             iconCls:'nav-item-zxaj',
                             list:caseData
@@ -235,9 +235,6 @@ class Home extends Component{
                 </div>
             </div>
         </div>
-    }
-    componentDidMount(){
-        this.props.changeNav(0);
     }
 }
 

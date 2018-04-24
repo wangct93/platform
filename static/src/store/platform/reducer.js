@@ -8,20 +8,24 @@ let defaultState = {
             text:'案事件库',
             children:[
                 {
-                    iconCls:'sd',
-                    text:'我的案事件'
+                    iconCls:'icon-shu1',
+                    text:'我的案事件',
+                    path:'/wdasj'
                 },
                 {
-                    iconCls:'sd',
-                    text:'案事件列表'
+                    iconCls:'icon-shu1',
+                    text:'案事件列表',
+                    path:'/asjlb'
                 },
                 {
-                    iconCls:'sd',
-                    text:'新建案事件'
+                    iconCls:'icon-shu1',
+                    text:'新建案事件',
+                    path:'/xjasj'
                 },
                 {
-                    iconCls:'sd',
-                    text:'案事件回收站'
+                    iconCls:'icon-shu1',
+                    text:'案事件回收站',
+                    path:'/wdhsz'
                 }
             ]
         },
@@ -29,18 +33,38 @@ let defaultState = {
             text:'串并案库',
             children:[
                 {
-                    iconCls:'sd',
-                    text:'我的串并案'
+                    iconCls:'icon-shu1',
+                    text:'我的串并案',
+                    path:'/wdcba'
                 },
                 {
-                    iconCls:'sd',
-                    text:'串并案列表'
+                    iconCls:'icon-shu1',
+                    text:'串并案列表',
+                    path:'/cbalb'
                 },
                 {
-                    iconCls:'sd',
-                    text:'其他技术串并案'
+                    iconCls:'icon-shu1',
+                    text:'其他技术串并案',
+                    path:'/qtjscba'
                 }
             ]
+        }
+    ],
+    navData:[
+        {
+            text:'采录员',
+            iconCls:'icon-shu1',
+            path:'/cly'
+        },
+        {
+            text:'审核员',
+            iconCls:'icon-shu1',
+            path:'/shy'
+        },
+        {
+            text:'研判员',
+            iconCls:'icon-shu1',
+            path:'/ypy'
         }
     ]
 };

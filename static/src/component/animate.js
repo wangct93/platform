@@ -9,58 +9,56 @@ import {Provider, connect} from 'react-redux';
 export default class animate extends Component{
     render(){
         let {oldProps,props} = this;
-        let {Component,data} = props;
-        let {option} = this.state || {};
+        let {data} = props;
+        let {animateData} = this.state || {};
+        let Component = props.component;
         if(oldProps !== props){
             this.oldProps = props;
             this.start();
         }
-        return <Component data={data} option={option}/>
+        return <Component data={data} animateData={animateData}/>
     }
     start(){
         clearInterval(this.timer);
-        let {option = {},interval = 300} = this.props;
+        let {to = {},from = {},interval = 300,success} = this.props;
         let speedData = {};
         let nowData = {};
         let count = 0;
         let maxCount = Math.ceil(interval / 30);
-        for(let type in option){
-            if(option.hasOwnProperty(type)){
-                let ary = option[type];
-                if(!wt.isArray(ary)){
-                    ary = [ary,ary];
+        for(let type in from){
+            if(from.hasOwnProperty(type)){
+                let value = from[type];
+                if(value !== undefined){
+                    if(to[type] === undefined){
+                        to[type] = value;
+                    }
+                    nowData[type] = value;
+                    speedData[type] = (to[type].toString().toNum() - value.toString().toNum()) / maxCount;
                 }
-                nowData[type] = ary[0];
-                speedData[type] = (ary[1].toString().toNum() - ary[0].toString().toNum()) / maxCount;
             }
         }
-        let timer = setInterval(() => {
-            count++;
-            if(count >= maxCount){
-                clearInterval(timer);
-                for(let type in option){
-                    if(option.hasOwnProperty(type)){
-                        let ary = option[type];
-                        if(!wt.isArray(ary)){
-                            ary = [ary,ary];
+        if(!wt.isEmpty(nowData)){
+            let timer = setInterval(() => {
+                count++;
+                if(count >= maxCount){
+                    clearInterval(timer);
+                    nowData = to;
+                    wt.execFunc(success,to);
+                }else{
+                    for(let type in nowData){
+                        if(nowData.hasOwnProperty(type)){
+                            nowData[type] += speedData[type];
                         }
-                        nowData[type] = ary[1];
                     }
                 }
-            }else{
-                for(let type in nowData){
-                    if(nowData.hasOwnProperty(type)){
-                        nowData[type] += speedData[type];
-                    }
-                }
-            }
-            this.updateView(nowData);
-        },30);
-        this.timer = timer;
+                this.updateView(nowData);
+            },30);
+            this.timer = timer;
+        }
     }
-    updateView(option){
+    updateView(data){
         this.setState({
-            option:wt.clone(option)
+            animateData:wt.clone(data)
         });
     }
 }

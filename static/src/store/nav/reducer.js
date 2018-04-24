@@ -9,7 +9,7 @@ let defaultState = {
         },
         {
             title:'我的平台',
-            iconCls:'icon-platform',
+            iconCls:'icon-shu1',
             path:'/platform'
         }
     ]

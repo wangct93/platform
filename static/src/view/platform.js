@@ -3,97 +3,152 @@
  */
 import React from 'react';
 import Component from '../lib/component';
-import {render} from 'react-dom';
-import {Provider, connect} from 'react-redux';
+import { connect} from 'react-redux';
+import SideNav from '../component/sideNav';
+import {HashRouter,NavLink,Route,Switch,withRouter,Redirect} from 'react-router-dom';
 
-
-import Animate from '../component/animate';
+import CheckText from '../component/checkText';
 
 class Platform extends Component{
     render(){
+        let {sideNavData,match,navData} = this.props;
         return <div className="body-content platform-container">
-            <SideNavBox data={this.props.sideNavData}/>
+            <HashRouter basename={match.url}>
+                <React.Fragment>
+                    <SideNav data={sideNavData}/>
+                    <div className="flex-fit">
+                        <div className="platform-header">
+                            <div className="alarm-box">
+
+                            </div>
+                            <nav className="nav-list">
+                                {
+                                    navData.map(({path,text,iconCls},i) => {
+                                        return <NavLink key={i} className={`btn-icon`} to={path}>
+                                            <i className={`iconfont ${iconCls}`}/>
+                                            <span>{text}</span>
+                                        </NavLink>
+                                    })
+                                }
+                            </nav>
+                        </div>
+                        <div className="flex-fit">
+                            <Switch>
+                                <Route path="/cly" component={ClyView}/>
+                                <Route path="/shy" component={ShyView}/>
+                                <Route path="/ypy" component={YpyView}/>
+                                <Route path="/wdasj" component={WdasjView}/>
+                                <Redirect to="/cly" />
+                            </Switch>
+                        </div>
+                    </div>
+                    <WdasjView/>
+                </React.Fragment>
+            </HashRouter>
         </div>
     }
 }
 
-class Test extends Component{
-    render(){
-        return <div>
 
-        </div>
-    }
-}
 
-class SideNavBox extends Component{
-    render(){
-        let {click,maxHeight} = this;
-        let {data} = this.props;
-        let {index,oldIndex} = this.state || {};
-        return <div className="side-nav-box">
-            <div className="side-nav-header">
-                <i className="iconfont iconfont-menu"/>
-            </div>
-            <div className="side-nav-body" ref="body">
-                <ul className="nav-list" ref="list">
+class Box extends Component{
+    constructor(){
+        super();
+        this.state = {
+            searchData:[
+                [
                     {
-                        data.map((item,i) => {
-                            let height = i === index ? [0,maxHeight] : i === oldIndex ? [maxHeight,0] : [0,0];
-                            return <SideNavItem height={height} click={click.bind(this,i)} key={i} data={item}/>
+                        name:'关键词',
+                        component:'input',
+                        width:300
+                    },
+                    {
+                        name:'词组关系',
+                        component:CheckText,
+                        data:[
+                            {
+                                text:'与'
+                            },
+                            {
+                                text:'或'
+                            }
+                        ],
+                        width:300
+                    }
+                ]
+            ]
+        }
+    }
+    render(){
+        let {searchData} = this.state;
+        return <div className="search-view-container">
+            <div className="sv-header">
+                <div className="sv-form">
+                    {
+                        searchData.map((item,i) => {
+                            return <div key={i} className="svf-line">
+                                    {
+                                        item.map((item,i) => {
+                                            let {component,name,width,cls = ''} = item;
+                                            return <React.Fragment key={i}>
+                                                {
+                                                    name && <div className="sv-name">{name}：</div>
+                                                }
+                                                <div className={`sv-value ${cls}`} style={{
+                                                    width:width.toString().toCssValue()
+                                                }}>
+                                                    {
+                                                        React.createElement(component,item)
+                                                    }
+                                                </div>
+                                            </React.Fragment>
+                                        })
+                                    }
+                            </div>
                         })
                     }
-                </ul>
+                </div>
+                <div className="sv-btn-box">
+                    <a className="w-btn">
+                        <i className="iconfont icon-search"/>
+                    </a>
+                </div>
             </div>
         </div>
     }
-    click(nowIndex){
-        let {index} = this.state || {};
-        if(nowIndex === index){
-            nowIndex = undefined;
-        }
-        this.setState({
-            index:nowIndex,
-            oldIndex:index
-        });
-    }
-    componentDidMount(){
-        let {body,list} = this.refs;
-        this.maxHeight = body.offsetHeight - list.offsetHeight;
-    }
 }
 
-class SideNavItem extends Component{
+
+
+class ClyView extends Component{
     render(){
-        let {data = {},click,height = [0,0]} = this.props;
-        let {text = '',children = [],iconCls} = data;
-        return <li>
-            <div className="nav-header" onClick={click}>
-                <i className={iconCls ? `iconfont ${iconCls}` : 'triangle'}/>
-                <span>{text}</span>
-            </div>
-            {
-                children.length ? <Animate data={children} Component={SideNavPanel} option={{
-                    height
-                }}/> : ''
-            }
-        </li>
+        return <div className="fit">
+            <Box />
+        </div>
     }
 }
-const SideNavPanel = ({data,option}) => {
-    console.log(option);
-    let {height} = option || {};
-    return <div className="nav-content" style={{
-        height:height + 'px'
-    }}>
-        <ul className="nav-list">
-            {
-                data.map((item,i) => {
-                    return <SideNavItem key={i} data={item}/>
-                })
-            }
-        </ul>
-    </div>
-};
+class ShyView extends Component{
+    render(){
+        return <div>
+s
+        </div>
+    }
+}
+class YpyView extends Component{
+    render(){
+        return <div>
+y
+
+        </div>
+    }
+}
+class WdasjView extends Component{
+    render(){
+        return <div>
+wd
+        </div>
+    }
+}
 
 
 export default connect(state => state.platformData)(Platform);
