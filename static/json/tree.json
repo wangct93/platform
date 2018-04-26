@@ -1,0 +1,194 @@
+[
+  {
+    "id": "330000000000000002",
+    "childrenCount": 0,
+    "text": "省本级",
+    "state": "closed",
+    "attributes": {
+      "LEVELCODE": "1",
+      "CHILDCOUNT": "43",
+      "DB33CODE": "",
+      "PARENTID": "330000000000000001",
+      "DFKCODE": "330000000001"
+    },
+    "leaf": false,
+    "checked": false,
+    "iconCls": "tree-eqp"
+  },
+  {
+    "id": "330000000000361001",
+    "childrenCount": 0,
+    "text": "浙江省杭州市公安局",
+    "state": "closed",
+    "attributes": {
+      "LEVELCODE": "2",
+      "CHILDCOUNT": "24",
+      "DB33CODE": "330100",
+      "PARENTID": "330000000000000001",
+      "DFKCODE": "330100000000"
+    },
+    "leaf": false,
+    "checked": false,
+    "iconCls": "tree-eqp"
+  },
+  {
+    "id": "330000000000431001",
+    "childrenCount": 0,
+    "text": "浙江省宁波市公安局",
+    "state": "closed",
+    "attributes": {
+      "LEVELCODE": "2",
+      "CHILDCOUNT": "22",
+      "DB33CODE": "330200",
+      "PARENTID": "330000000000000001",
+      "DFKCODE": "330200000000"
+    },
+    "leaf": false,
+    "checked": false,
+    "iconCls": "tree-eqp"
+  },
+  {
+    "id": "330000000000441001",
+    "childrenCount": 0,
+    "text": "浙江省温州市公安局",
+    "state": "closed",
+    "attributes": {
+      "LEVELCODE": "2",
+      "CHILDCOUNT": "16",
+      "DB33CODE": "330300",
+      "PARENTID": "330000000000000001",
+      "DFKCODE": "330303000000"
+    },
+    "leaf": false,
+    "checked": false,
+    "iconCls": "tree-eqp"
+  },
+  {
+    "id": "330000000000451001",
+    "childrenCount": 0,
+    "text": "浙江省嘉兴市公安局",
+    "state": "closed",
+    "attributes": {
+      "LEVELCODE": "2",
+      "CHILDCOUNT": "10",
+      "DB33CODE": "330400",
+      "PARENTID": "330000000000000001",
+      "DFKCODE": "330400000000"
+    },
+    "leaf": false,
+    "checked": false,
+    "iconCls": "tree-eqp"
+  },
+  {
+    "id": "330000000000471001",
+    "childrenCount": 0,
+    "text": "浙江省湖州市公安局",
+    "state": "closed",
+    "attributes": {
+      "LEVELCODE": "2",
+      "CHILDCOUNT": "11",
+      "DB33CODE": "330500",
+      "PARENTID": "330000000000000001",
+      "DFKCODE": "330500000000"
+    },
+    "leaf": false,
+    "checked": false,
+    "iconCls": "tree-eqp"
+  },
+  {
+    "id": "330000000000481001",
+    "childrenCount": 0,
+    "text": "浙江省绍兴市公安局",
+    "state": "closed",
+    "attributes": {
+      "LEVELCODE": "2",
+      "CHILDCOUNT": "13",
+      "DB33CODE": "330600",
+      "PARENTID": "330000000000000001",
+      "DFKCODE": "330600000000"
+    },
+    "leaf": false,
+    "checked": false,
+    "iconCls": "tree-eqp"
+  },
+  {
+    "id": "330000000000491001",
+    "childrenCount": 0,
+    "text": "浙江省金华市公安局",
+    "state": "closed",
+    "attributes": {
+      "LEVELCODE": "2",
+      "CHILDCOUNT": "12",
+      "DB33CODE": "330700",
+      "PARENTID": "330000000000000001",
+      "DFKCODE": "330700000000"
+    },
+    "leaf": false,
+    "checked": false,
+    "iconCls": "tree-eqp"
+  },
+  {
+    "id": "330000000000461001",
+    "childrenCount": 0,
+    "text": "浙江省衢州市公安局",
+    "state": "closed",
+    "attributes": {
+      "LEVELCODE": "2",
+      "CHILDCOUNT": "9",
+      "DB33CODE": "330800",
+      "PARENTID": "330000000000000001",
+      "DFKCODE": "330800000000"
+    },
+    "leaf": false,
+    "checked": false,
+    "iconCls": "tree-eqp"
+  },
+  {
+    "id": "330000000000501001",
+    "childrenCount": 0,
+    "text": "浙江省舟山市公安局",
+    "state": "closed",
+    "attributes": {
+      "LEVELCODE": "2",
+      "CHILDCOUNT": "7",
+      "DB33CODE": "330900",
+      "PARENTID": "330000000000000001",
+      "DFKCODE": "330900000000"
+    },
+    "leaf": false,
+    "checked": false,
+    "iconCls": "tree-eqp"
+  },
+  {
+    "id": "330000000000511001",
+    "childrenCount": 0,
+    "text": "浙江省台州市公安局",
+    "state": "closed",
+    "attributes": {
+      "LEVELCODE": "2",
+      "CHILDCOUNT": "12",
+      "DB33CODE": "331000",
+      "PARENTID": "330000000000000001",
+      "DFKCODE": "331000000000"
+    },
+    "leaf": false,
+    "checked": false,
+    "iconCls": "tree-eqp"
+  },
+  {
+    "id": "330000000000551001",
+    "childrenCount": 0,
+    "text": "浙江省丽水市公安局",
+    "state": "closed",
+    "attributes": {
+      "LEVELCODE": "2",
+      "CHILDCOUNT": "11",
+      "DB33CODE": "331100",
+      "PARENTID": "330000000000000001",
+      "DFKCODE": "331100000000"
+    },
+    "leaf": false,
+    "checked": false,
+    "iconCls": "tree-eqp"
+  }
+]

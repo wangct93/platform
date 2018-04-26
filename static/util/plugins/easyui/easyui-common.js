@@ -17,7 +17,7 @@
     }
     $.createWin = function (options) {
         if (!options.url && !options.contents) {
-            $.messager.alert("ÌáÊ¾", "È±ÉÙ±ØÒª²ÎÊı!(url or contents)");
+            $.messager.alert("æç¤º", "ç¼ºå°‘å¿…è¦å‚æ•°!(url or contents)");
             return false;
         }
         var windowId = CreateIndentityWindowId();
@@ -27,7 +27,7 @@
             options.winId = windowId;
         }
         var defaultBtn = [{
-            text: '¹Ø±Õ',
+            text: 'å…³é—­',
             iconCls: 'icon-cancel',
             handler: function () {
                 $("#" + windowId).dialog("close");
@@ -222,7 +222,7 @@ function validateForm(form){
 	return form.length > 0 && form.form('validate');
 }
 
-/** ´¦ÀítreeÊı¾İ Ê¹ÆäÖ§³ÖÆ½»¬Êı¾İ¸ñÊ½ */
+/** å¤„ç†treeæ•°æ® ä½¿å…¶æ”¯æŒå¹³æ»‘æ•°æ®æ ¼å¼ */
 function treeDataFilter(opt, data, parent) {
 	var idFiled, textFiled, parentField;
 	if (opt.parentField) {
@@ -275,24 +275,24 @@ Date.prototype.format = function(format){
 
 
 /**
- * easyui Ä¬ÈÏÉèÖÃ
+ * easyui é»˜è®¤è®¾ç½®
  */
-$.fn.datagrid.defaults.loadMsg = '¼ÓÔØÖĞ....'; //¼ÓÔØµÈ´ıÌáÊ¾
-$.fn.datagrid.defaults.pagination = true; //·ÖÒ³
-$.fn.datagrid.defaults.border = true; //±í¸ñ±ß¿ò
-$.fn.datagrid.defaults.striped = true; //µ¥Ôª¸ñ±ß¿ò
-$.fn.datagrid.defaults.fit = true;//±í¸ñ×ÔÊÊÓ¦
-$.fn.datagrid.defaults.pageSize = 20;//Ã¿Ò³ÏÔÊ¾ĞĞÊı
-$.fn.datagrid.defaults.fitColumns = true; //×ÔÊÊÓ¦ÁĞ¿í
-$.fn.datagrid.defaults.rownumbers = false; //ĞòºÅ
-$.fn.datagrid.defaults.pageList = [5, 10, 20, 30, 50, 80, 100,200];//·ÖÒ³ÅäÖÃ
-$.fn.datagrid.defaults.singleSelect = true; //µ¥Ñ¡
-$.fn.datagrid.defaults.pageNumber = 1; //Ä¬ÈÏÏÔÊ¾µÚÒ»Ò³
+$.fn.datagrid.defaults.loadMsg = 'åŠ è½½ä¸­....'; //åŠ è½½ç­‰å¾…æç¤º
+$.fn.datagrid.defaults.pagination = true; //åˆ†é¡µ
+$.fn.datagrid.defaults.border = true; //è¡¨æ ¼è¾¹æ¡†
+$.fn.datagrid.defaults.striped = true; //å•å…ƒæ ¼è¾¹æ¡†
+$.fn.datagrid.defaults.fit = true;//è¡¨æ ¼è‡ªé€‚åº”
+$.fn.datagrid.defaults.pageSize = 20;//æ¯é¡µæ˜¾ç¤ºè¡Œæ•°
+$.fn.datagrid.defaults.fitColumns = true; //è‡ªé€‚åº”åˆ—å®½
+$.fn.datagrid.defaults.rownumbers = false; //åºå·
+$.fn.datagrid.defaults.pageList = [5, 10, 20, 30, 50, 80, 100,200];//åˆ†é¡µé…ç½®
+$.fn.datagrid.defaults.singleSelect = true; //å•é€‰
+$.fn.datagrid.defaults.pageNumber = 1; //é»˜è®¤æ˜¾ç¤ºç¬¬ä¸€é¡µ
 $.messager.defaults.width=600;
 
 
 /**
- * jQuery ½«form±íµ¥ÔªËØµÄÖµĞòÁĞ»¯³É¶ÔÏó
+ * jQuery å°†formè¡¨å•å…ƒç´ çš„å€¼åºåˆ—åŒ–æˆå¯¹è±¡
  */
 $.extend($.fn.form.methods, {
 	serialize : function(jq) {
@@ -306,7 +306,7 @@ $.extend($.fn.form.methods, {
 				value = item["value"].replace(/(^\s*)|(\s*$)/g, "");
 			}
 			
-			if(value == '---ÇëÑ¡Ôñ---'){
+			if(value == '---è¯·é€‰æ‹©---'){
 				value = '';
 			}
 
@@ -330,23 +330,23 @@ $.extend($.fn.form.methods, {
 });
 
 /*
- * jquery easyui ÑéÖ¤À©Õ¹¹æÔò£ºrule 
- * vnull ÎÄ±¾¿ò·Ç¿Õ vdefault ²»ÄÜµÈÄ¬ÈÏÖµ'---ÇëÑ¡Ôñ---' 
- * vint ÕıÕûÊı+0
- * vpint ÕıÕûÊı 
- * vthan Á½Êı(ÕıÕûÊı+0)±È½Ï param
- * Ç°ÕßÎª0Ê±£¬ºóÕß²»µÈÓÚ0Ê±·µ»Øfalse£»Ç°Õß²»Îª0Ê±£¬ÈôºóÕß´óÓÚ0Ğ¡ÓÚµÈÓÚÇ°ÕßÊ±·µ»Øfalse vv ÕıÕûÊı,¹ºÂòÆøÁ¿ÑéÖ¤,param.¿É¹»ÆøÁ¿<0Ê±ÎŞÏŞÖÆ,´óÓÚ0Ê±£¬ÅĞ¶Ï¿É¹»ÆøÁ¿¡£
- * vread ÕıÕûÊı+0,param ÑéÖ¤³­±í±í¶ÁÊı£¬±¾´Î±í¶ÁÊıĞ¡ÓÚÉÏ´Î±í¶ÁÊı·µ»Øfalse vrcharge ½ğ¶î¸ñÊ½,³­±íÊÕ·ÑÑéÖ¤ param
- * 2,ÕË»§½ğ¶î£¬Ó¦ÊÕ½ğ¶î ¹«Ê½:ÊµÊÕ½ğ¶î-¾ø¶ÔÖµ(ÕË»§½ğ¶î-Ó¦ÊÕ½ğ¶î)<0 ·µ»Øfalse vthanm Á½Êı±È½Ï(½ğ¶î¸ñÊ½),param ,ºóÕß
- * Ğè´óÓÚ0ÇÒĞ¡ÓÚÇ°Õß vthanmy Á½Êı±È½Ï(½ğ¶î¸ñÊ½),param,ºóÕßĞè´óÓÚµÈÓÚÇ°ÕßÇÒ´óÓÚ0 vthanmz
- * Á½Êı±È½Ï(½ğ¶î¸ñÊ½),param,ºóÕßĞè´óÓÚµÈÓÚÇ°Õß vryear ³­±íÄê·İÑéÖ¤ vrmonth ³­±íÔÂ·İÑéÖ¤ vmoney ½ğ¶î¸ñÊ½ vmy ½ğ¶î¸ñÊ½
- * Ğè´óÓÚ0 vdate ÑéÖ¤ÈÕÆÚ¸ñÊ½ ¸ñÊ½yyyy-MM-dd vdatehm ÑéÖ¤ÈÕÆÚ¸ñÊ½ ¸ñÊ½yyyy-MM-dd HH:mm eqPwd ÑéÖ¤Á½´ÎÃÜÂë
- * vdecimal ÑéÖ¤Êı×Ö¸ñÊ½£¬Ğ¡Êıµãºó0Î»£¬1Î»£¬2Î»£¬3Î»£¬4Î»¶¼¿É gteqnumber ÑéÖ¤´óÓÚµÈÓÚÄ³Êı×Ö gtnumber ÑéÖ¤´óÓÚÄ³Êı×Ö
- * alpha Ö»ÄÜÊäÈë×ÖÄ¸ alphanum Ö»ÄÜÊäÈë×ÖÄ¸ºÍÊı×Ö chinese Ö»ÄÜÊäÈëÖĞÎÄ
+ * jquery easyui éªŒè¯æ‰©å±•è§„åˆ™ï¼šrule 
+ * vnull æ–‡æœ¬æ¡†éç©º vdefault ä¸èƒ½ç­‰é»˜è®¤å€¼'---è¯·é€‰æ‹©---' 
+ * vint æ­£æ•´æ•°+0
+ * vpint æ­£æ•´æ•° 
+ * vthan ä¸¤æ•°(æ­£æ•´æ•°+0)æ¯”è¾ƒ param
+ * å‰è€…ä¸º0æ—¶ï¼Œåè€…ä¸ç­‰äº0æ—¶è¿”å›falseï¼›å‰è€…ä¸ä¸º0æ—¶ï¼Œè‹¥åè€…å¤§äº0å°äºç­‰äºå‰è€…æ—¶è¿”å›false vv æ­£æ•´æ•°,è´­ä¹°æ°”é‡éªŒè¯,param.å¯å¤Ÿæ°”é‡<0æ—¶æ— é™åˆ¶,å¤§äº0æ—¶ï¼Œåˆ¤æ–­å¯å¤Ÿæ°”é‡ã€‚
+ * vread æ­£æ•´æ•°+0,param éªŒè¯æŠ„è¡¨è¡¨è¯»æ•°ï¼Œæœ¬æ¬¡è¡¨è¯»æ•°å°äºä¸Šæ¬¡è¡¨è¯»æ•°è¿”å›false vrcharge é‡‘é¢æ ¼å¼,æŠ„è¡¨æ”¶è´¹éªŒè¯ param
+ * 2,è´¦æˆ·é‡‘é¢ï¼Œåº”æ”¶é‡‘é¢ å…¬å¼:å®æ”¶é‡‘é¢-ç»å¯¹å€¼(è´¦æˆ·é‡‘é¢-åº”æ”¶é‡‘é¢)<0 è¿”å›false vthanm ä¸¤æ•°æ¯”è¾ƒ(é‡‘é¢æ ¼å¼),param ,åè€…
+ * éœ€å¤§äº0ä¸”å°äºå‰è€… vthanmy ä¸¤æ•°æ¯”è¾ƒ(é‡‘é¢æ ¼å¼),param,åè€…éœ€å¤§äºç­‰äºå‰è€…ä¸”å¤§äº0 vthanmz
+ * ä¸¤æ•°æ¯”è¾ƒ(é‡‘é¢æ ¼å¼),param,åè€…éœ€å¤§äºç­‰äºå‰è€… vryear æŠ„è¡¨å¹´ä»½éªŒè¯ vrmonth æŠ„è¡¨æœˆä»½éªŒè¯ vmoney é‡‘é¢æ ¼å¼ vmy é‡‘é¢æ ¼å¼
+ * éœ€å¤§äº0 vdate éªŒè¯æ—¥æœŸæ ¼å¼ æ ¼å¼yyyy-MM-dd vdatehm éªŒè¯æ—¥æœŸæ ¼å¼ æ ¼å¼yyyy-MM-dd HH:mm eqPwd éªŒè¯ä¸¤æ¬¡å¯†ç 
+ * vdecimal éªŒè¯æ•°å­—æ ¼å¼ï¼Œå°æ•°ç‚¹å0ä½ï¼Œ1ä½ï¼Œ2ä½ï¼Œ3ä½ï¼Œ4ä½éƒ½å¯ gteqnumber éªŒè¯å¤§äºç­‰äºæŸæ•°å­— gtnumber éªŒè¯å¤§äºæŸæ•°å­—
+ * alpha åªèƒ½è¾“å…¥å­—æ¯ alphanum åªèƒ½è¾“å…¥å­—æ¯å’Œæ•°å­— chinese åªèƒ½è¾“å…¥ä¸­æ–‡
  */
 
 /**
- * easyui µ¯³öÌáÊ¾¿ò¼òµ¥·â×°
+ * easyui å¼¹å‡ºæç¤ºæ¡†ç®€å•å°è£…
  */
 (function($) {
 	function alertDlg(title, msg, icon, fn) {
@@ -360,7 +360,7 @@ $.extend($.fn.form.methods, {
 	$.dlg = {
 		/**
 		 * 
-		 *  È·ÈÏ¿ò
+		 *  ç¡®è®¤æ¡†
 		 * @author wangct
 		 * @param msg
 		 * @param fn
@@ -373,10 +373,10 @@ $.extend($.fn.form.methods, {
 			var defaults={
 					id:'dialog_'+new Date().getTime(),
 					modal:true,
-					title:'Ñ¯ÎÊ',
+					title:'è¯¢é—®',
 					height:235,
 					width:600,
-					buttons:[{iconCls:'icon-ok',text:'È·¶¨',handler:function(){
+					buttons:[{iconCls:'icon-ok',text:'ç¡®å®š',handler:function(){
 						try{
 							if(fn){
 								if(typeof fn == 'function'){
@@ -387,10 +387,10 @@ $.extend($.fn.form.methods, {
 							}
 							jq('#'+id).dialog('destroy');
 						}catch(e){
-							self.alertError("È·¶¨·½·¨Ö´ĞĞÊ§°Ü("+e.message+")£¬Çë¼ì²éµ÷ÓÃµÄ·½·¨");
+							self.alertError("ç¡®å®šæ–¹æ³•æ‰§è¡Œå¤±è´¥("+e.message+")ï¼Œè¯·æ£€æŸ¥è°ƒç”¨çš„æ–¹æ³•");
 						}
 						
-					}},{iconCls:'icon-close',text:'È¡Ïû',handler:function(){
+					}},{iconCls:'icon-close',text:'å–æ¶ˆ',handler:function(){
 						try{
 							jq('#'+id).dialog('destroy');
 							if(canFn){
@@ -401,7 +401,7 @@ $.extend($.fn.form.methods, {
 								}
 							}
 						}catch(e){
-							self.alertError("È¡Ïû·½·¨Ö´ĞĞÊ§°Ü("+e.message+")£¬Çë¼ì²éµ÷ÓÃµÄ·½·¨");
+							self.alertError("å–æ¶ˆæ–¹æ³•æ‰§è¡Œå¤±è´¥("+e.message+")ï¼Œè¯·æ£€æŸ¥è°ƒç”¨çš„æ–¹æ³•");
 						}
 					}}]
 				};
@@ -421,19 +421,19 @@ $.extend($.fn.form.methods, {
 			jq('#'+id).dialog(defaults).parent().addClass('messager-window');
 		},
 		alertError : function(msg, fn) {
-			alertDlg('´íÎó', msg, 'error', fn);
+			alertDlg('é”™è¯¯', msg, 'error', fn);
 		},
 		alertInfo : function(msg, fn) {
-			alertDlg('ÌáÊ¾', msg, 'info', fn);
+			alertDlg('æç¤º', msg, 'info', fn);
 		},
 		alertQuestion : function(msg, fn) {
-			alertDlg('Ñ¯ÎÊ', msg, 'question', fn);
+			alertDlg('è¯¢é—®', msg, 'question', fn);
 		},
 		alertWarning : function(msg, fn) {
-			alertDlg('¾¯¸æ', msg, 'warning', fn);
+			alertDlg('è­¦å‘Š', msg, 'warning', fn);
 		},
 		confirm : function(msg, fn,cancleFn) {
-			top.jQuery.messager.confirm('Ñ¯ÎÊ', msg, function(isOk) {
+			top.jQuery.messager.confirm('è¯¢é—®', msg, function(isOk) {
 				if (fn && isOk) {
 					fn();
 				}else{
@@ -444,18 +444,18 @@ $.extend($.fn.form.methods, {
 			});
 		},
 		/**
-		 * µ¯³ö´°¿Ú£¬È·¶¨°´Å¥·½·¨Í¨ÓÃ 
+		 * å¼¹å‡ºçª—å£ï¼Œç¡®å®šæŒ‰é’®æ–¹æ³•é€šç”¨ 
 		 * @param options:
-		 * title: ±êÌâ
-		 * pageUrl:Ò³Ãæurl
-		 * data : url²ÎÊı
-		 * width :´°¿Ú¿í¶È
-		 * height:´°¿Ú¸ß¶È
-		 * saveUrl:±£´æurl
-		 * formId:form±íµ¥id
-		 * succClose:Ö´ĞĞ³É¹¦ºóÊÇ·ñ¹Ø±Õ´°¿Ú Ä¬ÈÏÎªtrue
-		 * @param successFn ³É¹¦ºóÖ´ĞĞµÄº¯Êı
-		 * @getDataFn ÖØĞÂ×é×°ÏÂÊı¾İ
+		 * title: æ ‡é¢˜
+		 * pageUrl:é¡µé¢url
+		 * data : urlå‚æ•°
+		 * width :çª—å£å®½åº¦
+		 * height:çª—å£é«˜åº¦
+		 * saveUrl:ä¿å­˜url
+		 * formId:formè¡¨å•id
+		 * succClose:æ‰§è¡ŒæˆåŠŸåæ˜¯å¦å…³é—­çª—å£ é»˜è®¤ä¸ºtrue
+		 * @param successFn æˆåŠŸåæ‰§è¡Œçš„å‡½æ•°
+		 * @getDataFn é‡æ–°ç»„è£…ä¸‹æ•°æ®
 		 */
 		alertAddOrEditForm:function(options,successFn,getDataFn){
 			if(options.succClose == null){
@@ -474,7 +474,7 @@ $.extend($.fn.form.methods, {
 				height:options.height,
 				modal: true,
 				buttons:[{
-					text:'È·¶¨',
+					text:'ç¡®å®š',
 					iconCls:'icon-ok',
 					btnClick: function(dialog,target){
 						if(target("[id="+options.formId+"]").form('validate')){
@@ -495,12 +495,12 @@ $.extend($.fn.form.methods, {
 										return;
 									}
 									
-									//Ö´ĞĞ³É¹¦ºó¹Ø±Õ¶Ô»°´°¿Ú
+									//æ‰§è¡ŒæˆåŠŸåå…³é—­å¯¹è¯çª—å£
 									if(options.succClose){
 										dialog.dialog('destroy');
 									}
 									
-									//Ö´ĞĞ»Øµ÷·½·¨
+									//æ‰§è¡Œå›è°ƒæ–¹æ³•
 									if(successFn){
 										successFn();
 									}
@@ -512,13 +512,13 @@ $.extend($.fn.form.methods, {
 			});
 		},
 		/**
-		 * µ¯³öÈ·ÈÏ¿ò²¢Ö´ĞĞ·½·¨
+		 * å¼¹å‡ºç¡®è®¤æ¡†å¹¶æ‰§è¡Œæ–¹æ³•
 		 * @param options:
-		 * info: ÌáÊ¾ĞÅÏ¢
-		 * fnUrl: Ö´ĞĞurl
-		 * data: Êı¾İ
-		 * @param successFn ³É¹¦ºóÖ´ĞĞµÄ·½·¨
-		 * @param cancleFn µã»÷ÌáÊ¾¿òÈ¡Ïû°´Å¥ºóµÄÖ´ĞĞ·½·¨
+		 * info: æç¤ºä¿¡æ¯
+		 * fnUrl: æ‰§è¡Œurl
+		 * data: æ•°æ®
+		 * @param successFn æˆåŠŸåæ‰§è¡Œçš„æ–¹æ³•
+		 * @param cancleFn ç‚¹å‡»æç¤ºæ¡†å–æ¶ˆæŒ‰é’®åçš„æ‰§è¡Œæ–¹æ³•
 		 */
 		alertConfirmFn:function(options,successFn,cancleFn,errorFn){
 			
@@ -552,7 +552,7 @@ $.extend($.fn.form.methods, {
 (function($){
 	$.extend($.fn.layout.methods, {   
         /**  
-         * Ãæ°åÊÇ·ñ´æÔÚºÍ¿É¼û  
+         * é¢æ¿æ˜¯å¦å­˜åœ¨å’Œå¯è§  
          * @param {Object} jq  
          * @param {Object} params  
          */  
@@ -569,7 +569,7 @@ $.extend($.fn.form.methods, {
             }   
         },   
         /**  
-         * Òş²Ø³ıÄ³¸öregion£¬center³ıÍâ¡£  
+         * éšè—é™¤æŸä¸ªregionï¼Œcenteré™¤å¤–ã€‚  
          * @param {Object} jq  
          * @param {Object} params  
          */  
@@ -611,7 +611,7 @@ $.extend($.fn.form.methods, {
             });   
         },   
         /**  
-         * ÏÔÊ¾Ä³¸öregion£¬center³ıÍâ¡£  
+         * æ˜¾ç¤ºæŸä¸ªregionï¼Œcenteré™¤å¤–ã€‚  
          * @param {Object} jq  
          * @param {Object} params  
          */  

@@ -33,9 +33,15 @@ export default class Combobox extends Component{
         });
     }
     render(){
-        let {width = '100%',height = '100%',panelWidth = 'auto',panelHeight = 'auto',textField = 'text',sep = ','} = this.props.option || {};
+        let {width = '100%',height = '100%',panelWidth = 'auto',panelHeight = 'auto',textField = 'text',sep = ',',data = []} = this.props;
+        let oldData = this.state.data || [];
+        if(oldData !== data){
+            setTimeout(() => {
+                this.componentWillMount();
+            },10);
+        }
         let {clickItem,click} = this;
-        let {listShow,data,selectList} = this.state;
+        let {listShow,selectList} = this.state;
         return <div onClick={click.bind(this)} className="combo-box" style={{
             width:width.toString().toCssValue(),
             height:height.toString().toCssValue()
@@ -59,7 +65,7 @@ export default class Combobox extends Component{
     clickItem(itemIndex,e){
         let {selectList,data} = this.state;
         selectList = wt.clone(selectList);
-        let {multiple,onSelect,required = true} = this.props.option || {};
+        let {multiple,onSelect,required = true} = this.props;
         let index = selectList.indexOf(itemIndex);
         if(index === -1){
             if(multiple){
@@ -84,7 +90,7 @@ export default class Combobox extends Component{
         let {selectList,data} = this.state;
         return selectList.map(item => {
             return data[item];
-        });
+        }).filter(item => item !== undefined);
     }
     getText(){
         let {textField = 'text'} = this.props;

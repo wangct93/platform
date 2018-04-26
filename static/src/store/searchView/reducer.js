@@ -1,0 +1,132 @@
+/**
+ * Created by Administrator on 2018/3/7.
+ */
+import {dispatch} from '../store';
+import {CheckText,LinkCombobox,DiffDateTime} from '../../component/searchComponent';
+let defaultState = {
+    cly:{
+        searchData:[
+            [
+                {
+                    name:'关键词',
+                    style:{
+                        width:410,
+                        height:26
+                    },
+                    placeholder:'输入案件编号、案件名称、简要案情进行检索'
+                },
+                {
+                    name:'词组关系',
+                    component:CheckText,
+                    data:[
+                        {
+                            text:'与'
+                        },
+                        {
+                            text:'或',
+                            selected:true
+                        }
+                    ]
+                }
+            ],
+            [
+                {
+                    name:'所属辖区',
+                    style:{
+                        width:410,
+                        height:26
+                    }
+                },
+                {
+                    component:CheckText,
+                    data:[
+                        {
+                            text:'全部'
+                        },
+                        {
+                            text:'发布案件'
+                        },
+                        {
+                            text:'暂存案件'
+                        }
+                    ]
+                }
+            ],
+            [
+                {
+                    name:'案件类别',
+                    component:LinkCombobox,
+                    width:410,
+                    data:[
+                        {
+                            name:'全部',
+                            selected:true
+                        },
+                        {
+                            name:'治安类',
+                            children:[
+                                {
+                                    id:1,
+                                    name:'违反治安管理处罚条例行为'
+                                },
+                                {
+                                    value:2,
+                                    name:'中华人民共和国治安管理处罚法'
+                                },
+                                {
+                                    value:3,
+                                    name:'违反国家及浙江省法律法规'
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    name:'串并标志',
+                    component:CheckText,
+                    data:[
+                        {
+                            text:'全部'
+                        },
+                        {
+                            text:'有'
+                        },
+                        {
+                            text:'无'
+                        }
+                    ]
+                }
+            ],
+            [
+                {
+                    name:'发案时间',
+                    component:DiffDateTime
+                }
+            ]
+        ],
+        btnData:[
+            {
+                iconCls:'icon-shu1',
+                text:'查询'
+            }
+        ],
+        data:[
+            {
+                id:'330233',
+                faTime:'2018-03-20 16:26:00',
+                lrTime:'2018-03-26 16:26:00',
+                type:'案件倒查',
+                title:'危害公共安全案'
+            }
+        ]
+    }
+};
+
+export let searchViewData = (state = defaultState,action = {}) => {
+    wt.execFunc(reducer[action.type],state,action);
+    return wt.extend(true,{},state);
+};
+
+let reducer = {
+
+};

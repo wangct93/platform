@@ -2,30 +2,21 @@
  * Created by Administrator on 2018/3/27.
  */
 import React from 'react';
-import Component from '../lib/component';
-import {render} from 'react-dom';
-import {Provider, connect} from 'react-redux';
+import {Provider,connect} from 'react-redux';
+import {HashRouter} from 'react-router-dom';
 
-import {HashRouter,Switch,Route,Link,withRouter,Redirect} from 'react-router-dom';
 
+import RouterSwitch from '../component/routerSwitch';
 import Header from '../view/header';
-import Home from '../view/home';
-import Platform from '../view/platform';
-import Blog from '../view/blog';
-import Works from '../view/works';
-export default class Router extends Component{
-    render(){
-        return <HashRouter>
-            <React.Fragment>
-                <Route path="/" component={Header} />
-                <div className="body">
-                    <Switch>
-                        <Route path="/home" component={Home}/>
-                        <Route path="/platform" component={Platform}/>
-                        <Redirect to="/home"/>
-                    </Switch>
-                </div>
-            </React.Fragment>
-        </HashRouter>
-    }
-}
+
+
+export default connect(state => state.navData)(({list}) => {
+    return <HashRouter>
+        <React.Fragment>
+            <Header data={list}/>
+            <div className="body">
+                <RouterSwitch data={list}/>
+            </div>
+        </React.Fragment>
+    </HashRouter>
+})

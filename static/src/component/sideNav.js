@@ -2,31 +2,30 @@
  * Created by Administrator on 2018/4/24.
  */
 import React,{Component} from 'react';
-import {render} from 'react-dom';
 
-import {NavLink} from 'react-router-dom';
+import {NavLink,withRouter} from 'react-router-dom';
 
 export default class SideNavBox extends Component{
     render(){
-        let {fitItem,fitWidth,props} = this;
+        let {click,headClick,props} = this;
         let {data} = props;
         let {activeList = [],isCollapsed} = this.state || {};
         return <div className={`side-nav-box ${isCollapsed ? 'side-nav-box-collapsed' : ''}`}>
-            <div className="side-nav-header" onClick={fitWidth.bind(this)}>
+            <div className="side-nav-header" onClick={headClick.bind(this)}>
                 <i className="iconfont icon-liebiao3"/>
             </div>
             <div className="side-nav-body" ref="body">
                 <ul className="nav-list" ref="list">
                     {
                         data.map((item,i) => {
-                            return <SideNavItem active={activeList.indexOf(i) !== -1} click={fitItem.bind(this,i)} key={i} data={item}/>
+                            return <SideNavItem active={activeList.indexOf(i) !== -1} click={click.bind(this,i)} key={i} data={item}/>
                         })
                     }
                 </ul>
             </div>
         </div>
     }
-    fitItem(index){
+    click(index){
         let {activeList = []} = this.state || {};
         activeList = wt.clone(activeList);
         if(activeList.indexOf(index) === -1){
@@ -39,7 +38,7 @@ export default class SideNavBox extends Component{
             activeList
         });
     }
-    fitWidth(){
+    headClick(){
         let {isCollapsed} = this.state || {};
         this.setState({
             isCollapsed:!isCollapsed
@@ -62,15 +61,15 @@ const SideNavItem = ({data = {},click,active}) => {
     </li>
 };
 
-const Item = ({data = {}}) => {
+const Item = withRouter(({data = {},match}) => {
     let {text = '',iconCls,path = '/'} = data;
     return <li>
-        <NavLink to={path} className={`nav-header nav-header-child`}>
+        <NavLink to={match.url + path} className={`nav-header nav-header-child`}>
             <i className={`iconfont ${iconCls}`}/>
             <span>{text}</span>
         </NavLink>
     </li>
-};
+});
 
 class SideNavPanel extends Component{
     render(){

@@ -6,6 +6,7 @@ import Component from '../lib/component';
 import {connect} from 'react-redux';
 
 import {HashRouter,NavLink,Switch,Route,Redirect,withRouter} from 'react-router-dom';
+import RouterSwitch from '../component/routerSwitch';
 
 import * as actionObj from '../store/home/action';
 import echarts from 'echarts';
@@ -20,14 +21,7 @@ const NavBox = ({data}) => {
             }
         </nav>
         <div className="home-nav-content home-box">
-            <Switch>
-                {
-                    data.map(({path,component},i) => {
-                        return <Route path={path} key={i} component={component}/>
-                    })
-                }
-                <Redirect to={data[0].path} />
-            </Switch>
+            <RouterSwitch data={data} />
         </div>
     </div>;
 };

@@ -2,6 +2,8 @@
  * Created by Administrator on 2018/3/7.
  */
 import {dispatch} from '../store';
+
+import {ClyView} from '../../view/searchView';
 let defaultState = {
     sideNavData:[
         {
@@ -54,7 +56,8 @@ let defaultState = {
         {
             text:'采录员',
             iconCls:'icon-shu1',
-            path:'/cly'
+            path:'/cly',
+            component:ClyView
         },
         {
             text:'审核员',
@@ -66,7 +69,8 @@ let defaultState = {
             iconCls:'icon-shu1',
             path:'/ypy'
         }
-    ]
+    ],
+    data:[]
 };
 
 export let platformData = (state = defaultState,action = {}) => {
